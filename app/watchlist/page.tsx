@@ -1,5 +1,5 @@
 "use client";
-
+import type { Coin } from "@/types/coin"; // Adjust the import path as necessary
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 import CoinTable from "@/components/CoinTable";
@@ -7,7 +7,7 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default function WatchlistPage() {
   const [watchlist, setWatchlist] = useLocalStorage<string[]>("watchlist", []);
-  const [coins, setCoins] = useState<any[] | null>(null);
+  const [coins, setCoins] = useState<Coin[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   // ⭐ Toggle watchlist handler

@@ -2,13 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { cn } from "@/lib/utils"; // optional utility for className joining
-import  SearchBar  from "./SearchBar"; // Adjust the import path as necessary
 
 export default function Navbar() {
   const pathname = usePathname();
-const [query, setQuery] = useState("");
   const navItems = [
     { name: "Market", path: "/" },
     { name: "Watchlist", path: "/watchlist" },
@@ -33,8 +30,6 @@ const [query, setQuery] = useState("");
               {name}
             </Link>
           ))}
-            
-<SearchBar onSearch={setQuery} />
         </div>
       </div>
     </nav>

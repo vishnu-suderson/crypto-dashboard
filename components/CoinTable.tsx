@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type{Coin} from "@/types/coin"; // Adjust the import path as necessary
 
 type CoinTableProps = {
-  coins: any[];
-  watchlist: string[];
+  coins: Coin[];
+    watchlist: string[];
   toggleWatchlist: (id: string) => void;
 };
 

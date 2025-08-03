@@ -5,13 +5,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchCoins } from "@/lib/api";
 import CoinTableClient from "./CoinTableClient";
+import type { Coin } from "@/types/coin";
+
 
 export default function HomeClient() {
   const searchParams = useSearchParams();
   const pageParam = searchParams.get("page");
   const page = Number(pageParam || "1");
 
-  const [coins, setCoins] = useState<any[]>([]);
+  const [coins, setCoins] = useState<Coin[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
