@@ -2,11 +2,13 @@ import { fetchCoinDetails, fetchMarketChart } from "@/lib/api";
 import Chart from "@/components/Chart";
 import Image from "next/image";
 
-export default async function CoinDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
+interface Params {
+  params: {
+    id: string;
+  };
+}
+
+export default async function CoinDetail({ params }: Params) {
   const { id } = params;
 
   const coin = await fetchCoinDetails(id);
@@ -37,21 +39,18 @@ export default async function CoinDetail({
             ${market.current_price.usd.toLocaleString()}
           </p>
         </div>
-
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">Market Cap</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
             ${market.market_cap.usd.toLocaleString()}
           </p>
         </div>
-
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">24h Volume</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
             ${market.total_volume.usd.toLocaleString()}
           </p>
         </div>
-
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">Circulating Supply</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
