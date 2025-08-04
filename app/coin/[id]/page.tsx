@@ -2,11 +2,13 @@ import { fetchCoinDetails, fetchMarketChart } from "@/lib/api";
 import Chart from "@/components/Chart";
 import Image from "next/image";
 
-type Props = {
-  params: { id: string };
+type PageProps = {
+  params: {
+    id: string;
+  };
 };
 
-export default async function CoinDetail({ params }: Props) {
+export default async function CoinDetail({ params }: PageProps) {
   const { id } = params;
 
   const coin = await fetchCoinDetails(id);
