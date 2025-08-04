@@ -1,6 +1,7 @@
+export const dynamic = "force-dynamic";
 import HomeClient from "@/components/HomeClient";
 import { Suspense } from "react";
-export const dynamic = "force-dynamic";
+
 
 
 export default function HomePage() {
