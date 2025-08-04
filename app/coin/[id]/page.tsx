@@ -2,13 +2,11 @@ import { fetchCoinDetails, fetchMarketChart } from "@/lib/api";
 import Chart from "@/components/Chart";
 import Image from "next/image";
 
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function CoinDetail({ params }: PageProps) {
+export default async function CoinDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
 
   const coin = await fetchCoinDetails(id);
@@ -18,7 +16,7 @@ export default async function CoinDetail({ params }: PageProps) {
 
   return (
     <main className="p-4 max-w-4xl mx-auto space-y-6">
-      
+      {/* Header */}
       <div className="flex items-center gap-4">
         <Image src={coin.image.large} alt={coin.name} width={48} height={48} />
         <div>
@@ -31,7 +29,7 @@ export default async function CoinDetail({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Stats Card */}
+      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">Current Price</p>
@@ -39,18 +37,21 @@ export default async function CoinDetail({ params }: PageProps) {
             ${market.current_price.usd.toLocaleString()}
           </p>
         </div>
+
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">Market Cap</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
             ${market.market_cap.usd.toLocaleString()}
           </p>
         </div>
+
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">24h Volume</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
             ${market.total_volume.usd.toLocaleString()}
           </p>
         </div>
+
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-4 space-y-2">
           <p className="text-sm text-gray-500">Circulating Supply</p>
           <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
