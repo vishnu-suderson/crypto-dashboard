@@ -1,5 +1,10 @@
 import HomeClient from "@/components/HomeClient";
+import { Suspense } from "react";
 
 export default function HomePage() {
-  return <HomeClient />;
+  return (
+    <Suspense fallback={<div className="text-center p-6">Loading page...</div>}>
+      <HomeClient />
+      </Suspense>
+      );
 }
