@@ -1,3 +1,4 @@
+// app/HomeClient.tsx
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -6,7 +7,6 @@ import Link from "next/link";
 import { fetchCoins } from "@/lib/api";
 import CoinTableClient from "./CoinTableClient";
 import type { Coin } from "@/types/coin";
-
 
 export default function HomeClient() {
   const searchParams = useSearchParams();
